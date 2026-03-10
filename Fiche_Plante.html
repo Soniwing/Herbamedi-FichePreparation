@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche Plante - HerbaMedi</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; background: white; color: #3A3A3A; max-width: 600px; margin: auto; }
+@media print { @page { size: A4 portrait; margin: 20mm; } }
+.header { background: white; text-align: center; padding: 20px; border-bottom: 2px solid #2F6B4F; margin-bottom: 15px; }
+.logo-text { font-size: 22px; font-weight: bold; color: #2F6B4F; }
+.header-label { font-size: 11px; letter-spacing: 2px; color: #888; text-transform: uppercase; margin: 5px 0; }
+.header-titre { font-size: 24px; font-weight: bold; color: #1a1a1a; }
+.header-sous { font-size: 14px; color: #2F6B4F; font-style: italic; margin-top: 4px; }
+.container { padding: 15px; }
+.section { background-color: #E9F3EE; border-radius: 8px; padding: 15px; margin-bottom: 12px; border-left: 4px solid #2F6B4F; }
+.section-title { color: #2F6B4F; font-size: 13px; font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.section-content { font-size: 12px; color: #3A3A3A; line-height: 1.8; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.bullet { padding: 2px 0; }
+.bullet::before { content: "• "; color: #2F6B4F; font-weight: bold; }
+.footer { text-align: center; font-size: 10px; color: #aaa; margin-top: 20px; padding: 15px; border-top: 1px solid #ddd; background: white; }
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo-text">🌿 Herbamedi</div>
+<p class="header-label">FICHE PLANTE</p>
+<p class="header-titre" id="titre"></p>
+<p class="header-sous" id="nom-sci"></p>
+</div>
+<div class="container">
+
+<div class="section">
+<div class="section-title">📋 <span id="desc-titre"></span></div>
+<div class="section-content" id="desc-texte"></div>
+</div>
+
+<div class="section">
+<div class="section-title">💊 <span id="prop-titre"></span></div>
+<div class="section-content" id="prop-texte"></div>
+</div>
+
+<div class="section">
+<div class="section-title">🌡️ <span id="maux-titre"></span></div>
+<div class="section-content" id="maux-texte"></div>
+</div>
+
+<div class="section">
+<div class="section-title">🧪 <span id="prep-titre"></span></div>
+<div class="section-content" id="prep-texte"></div>
+</div>
+
+<div class="two-col">
+<div class="section">
+<div class="section-title">⚠️ <span id="prec-titre"></span></div>
+<div class="section-content" id="prec-texte"></div>
+</div>
+<div class="section">
+<div class="section-title">🔴 <span id="effets-titre"></span></div>
+<div class="section-content" id="effets-texte"></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">💊 <span id="inter-titre"></span></div>
+<div class="section-content" id="inter-texte"></div>
+</div>
+
+<div class="two-col">
+<div class="section">
+<div class="section-title">🌿 <span id="formes-titre"></span></div>
+<div class="section-content" id="formes-texte"></div>
+</div>
+<div class="section">
+<div class="section-title">⚗️ <span id="propact-titre"></span></div>
+<div class="section-content" id="propact-texte"></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">📏 <span id="poso-titre"></span></div>
+<div class="section-content" id="poso-texte"></div>
+</div>
+
+<div class="three-col">
+<div class="section">
+<div class="section-title">🌍 <span id="cont-titre"></span></div>
+<div class="section-content" id="cont-texte"></div>
+</div>
+<div class="section">
+<div class="section-title">📍 <span id="pays-titre"></span></div>
+<div class="section-content" id="pays-texte"></div>
+</div>
+<div class="section">
+<div class="section-title">🏔️ <span id="reg-titre"></span></div>
+<div class="section-content" id="reg-texte"></div>
+</div>
+</div>
+
+<div class="two-col">
+<div class="section">
+<div class="section-title">🌸 <span id="periode-titre"></span></div>
+<div class="section-content" id="periode-texte"></div>
+</div>
+<div class="section">
+<div class="section-title">🌱 <span id="culture-titre"></span></div>
+<div class="section-content" id="culture-texte"></div>
+</div>
+</div>
+
+</div>
+<div class="footer">Fiche générée par HerbaMedi © 2025 · Usage informatif uniquement · Ne remplace pas un avis médical</div>
+<script>
+const params = new URLSearchParams(window.location.search);
+document.getElementById('titre').innerText = params.get('titre') || '';
+document.getElementById('nom-sci').innerText = params.get('nom_sci') || '';
+document.getElementById('desc-titre').innerText = params.get('desc_titre') || '';
+document.getElementById('desc-texte').innerText = params.get('desc_texte') || '';
+document.getElementById('prop-titre').innerText = params.get('prop_titre') || '';
+const propTexte = (params.get('prop_texte') || '').split('|');
+document.getElementById('prop-texte').innerHTML = propTexte.map(t => t.trim() ? `<div class="bullet">${t}</div>` : '').join('');
+document.getElementById('maux-titre').innerText = params.get('maux_titre') || '';
+const mauxTexte = (params.get('maux_texte') || '').split('|');
+document.getElementById('maux-texte').innerHTML = mauxTexte.map(t => t.trim() ? `<div class="bullet">${t}</div>` : '').join('');
+document.getElementById('prep-titre').innerText = params.get('prep_titre') || '';
+const prepTexte = (params.get('prep_texte') || '').split('|');
+document.getElementById('prep-texte').innerHTML = prepTexte.map(t => t.trim() ? `<div class="bullet">${t}</div>` : '').join('');
+document.getElementById('prec-titre').innerText = params.get('prec_titre') || '';
+document.getElementById('prec-texte').innerText = params.get('prec_texte') || '';
+document.getElementById('effets-titre').innerText = params.get('effets_titre') || '';
+document.getElementById('effets-texte').innerText = params.get('effets_texte') || '';
+document.getElementById('inter-titre').innerText = params.get('inter_titre') || '';
+const interTexte = (params.get('inter_texte') || '').split('|');
+document.getElementById('inter-texte').innerHTML = interTexte.map(t => t.trim() ? `<div class="bullet">${t}</div>` : '').join('');
+document.getElementById('formes-titre').innerText = params.get('formes_titre') || '';
+const formesTexte = (params.get('formes_texte') || '').split('|');
+document.getElementById('formes-texte').innerHTML = formesTexte.map(t => t.trim() ? `<div class="bullet">${t}</div>` : '').join('');
+document.getElementById('propact-titre').innerText = params.get('propact_titre') || '';
+const propactTexte = (params.get('propact_texte') || '').split('|');
+document.getElementById('propact-texte').innerHTML = propactTexte.map(t => t.trim() ? `<div class="bullet">${t}</div>` : '').join('');
+document.getElementById('poso-titre').innerText = params.get('poso_titre') || '';
+document.getElementById('poso-texte').innerText = params.get('poso_texte') || '';
+document.getElementById('cont-titre').innerText = params.get('cont_titre') || '';
+const contTexte = (params.get('cont_texte') || '').split('|');
+document.getElementById('cont-texte').innerHTML = contTexte.map(t => t.trim() ? `<div class="bullet">${t}</div>` : '').join('');
+document.getElementById('pays-titre').innerText = params.get('pays_titre') || '';
+const paysTexte = (params.get('pays_texte') || '').split('|');
+document.getElementById('pays-texte').innerHTML = paysTexte.map(t => t.trim() ? `<div class="bullet">${t}</div>` : '').join('');
+document.getElementById('reg-titre').innerText = params.get('reg_titre') || '';
+const regTexte = (params.get('reg_texte') || '').split('|');
+document.getElementById('reg-texte').innerHTML = regTexte.map(t => t.trim() ? `<div class="bullet">${t}</div>` : '').join('');
+document.getElementById('periode-titre').innerText = params.get('periode_titre') || '';
+document.getElementById('periode-texte').innerText = params.get('periode_texte') || '';
+document.getElementById('culture-titre').innerText = params.get('culture_titre') || '';
+document.getElementById('culture-texte').innerText = params.get('culture_texte') || '';
+</script>
+</body>
+</html>
