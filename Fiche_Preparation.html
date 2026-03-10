@@ -6,13 +6,14 @@
 <title>Fiche Préparation - HerbaMedi</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial, sans-serif; background: #f5f5f0; color: #3A3A3A; }
-.header { background: white; text-align: center; padding: 20px; border-bottom: 1px solid #ddd; }
+body { font-family: Arial, sans-serif; background: white; color: #3A3A3A; max-width: 600px; margin: auto; }
+@media print { @page { size: A4 portrait; margin: 20mm; } }
+.header { background: white; text-align: center; padding: 20px; border-bottom: 2px solid #2F6B4F; margin-bottom: 15px; }
 .logo-text { font-size: 22px; font-weight: bold; color: #2F6B4F; }
 .header-label { font-size: 11px; letter-spacing: 2px; color: #888; text-transform: uppercase; margin: 5px 0; }
 .header-titre { font-size: 24px; font-weight: bold; color: #1a1a1a; }
-.container { max-width: 700px; margin: auto; padding: 15px; }
-.section { background: white; border-radius: 8px; padding: 15px; margin-bottom: 12px; border-left: 4px solid #2F6B4F; }
+.container { padding: 15px; }
+.section { background-color: #E9F3EE; border-radius: 8px; padding: 15px; margin-bottom: 12px; border-left: 4px solid #2F6B4F; }
 .section-title { color: #2F6B4F; font-size: 13px; font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
 .section-content { font-size: 12px; color: #3A3A3A; line-height: 1.8; }
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
